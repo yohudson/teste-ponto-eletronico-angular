@@ -1,27 +1,28 @@
-# TestePontoEletronicoAngular
+# Teste de Ponto Eletrônico - criado em Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
+Este projeto foi criado utilizando [Angular CLI](https://github.com/angular/angular-cli), versão 13.2.3.
 
-## Development server
+## Servidor de desenvolvimento
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+No prompt, execute o comando `ng serve -o` para iniciar um servidor de desenvolvimento. A página será aberta automaticamente no navegador principal.
+Caso não abra, basta acessar o link `http://localhost:4200/`. A aplicação será recarregada automaticamente toda vez que alguma modificação feita em algum arquivo for salva.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Execute o comando `ng build` para gerar a build do projeto. Os arquivos gerados durante a build serão armazenados na pasta `dist/`.
 
-## Running unit tests
+## Acessando a aplicação
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+A aplicação possui quatro usuários previamente cadastrados. Há uma validação que não permite que as páginas internas sejam acessadas se o usuário não realizar o login prévio.
 
-## Running end-to-end tests
+A aplicação não utiliza nenhum serviço de API e nenhum banco de dados, sendo feita a armazenagem dos dados diretamente em cache no navegador. Todas as alterações que forem feitas dentro da aplicação, ficarão disponíveis enquanto o cache do navegador não for limpo. As informações de ponto realizado associadas aos usuários estarão disponíveis enquanto o usuário permanecer logado, caso seja executado o logout, os pontos modificados serão limpos e a sessão será reiniciada.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Usuários de teste
 
-## Further help
+Para realizar o acesso à aplicação, é necessário entrar com o e-mail cadastrado para o usuário. Os e-mails disponíveis de antemão são:
+- johndoe@email.com
+- janedoe@email.com
+- morgan3man@email.com
+- gsimmons@email.com
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+As senhas de todos os usuários é `123`. É possível cadastrar novos usuários, que serão salvos no `localstorage`, em cache no navegador e a senha padrão para todos os usuários será `123` também.
