@@ -82,8 +82,16 @@ li:hover {
     background-color: #f1f1f1
 }
 
+td,
+th {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 td a {
     cursor: pointer;
+    white-space: nowrap;
 }
 
 table {

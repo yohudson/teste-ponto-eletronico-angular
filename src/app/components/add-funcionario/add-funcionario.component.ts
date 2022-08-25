@@ -17,6 +17,8 @@
     @Input() dadosFuncionario: any = {};
     @Output() obterFuncionarios = new EventEmitter<boolean>();
     @Output() fechar = new EventEmitter<boolean>();
+
+    regex: any = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   
     constructor(
       public global: Global
@@ -100,6 +102,11 @@
           reject('É preciso informar o e-mail do funcionário')
           return
         }
+        if (dado.email) {
+          if (!this.regex.test(dado.email)){
+            reject('Informe um e-mail válido para o cadastro do funcionário')
+          }
+        }
         resolve(dado)
       })
     }
@@ -133,6 +140,12 @@
           if (!item.email){
             Swal.fire('Erro', 'Não é possível salvar o usuário sem um e-mail válido','error')
             return
+          }
+          if (item.email) {
+            if (!this.regex.test(item.email)){
+              Swal.fire('Erro','Informe um e-mail válido para o cadastro do funcionário','error')
+              return
+            }
           }
         }
       }

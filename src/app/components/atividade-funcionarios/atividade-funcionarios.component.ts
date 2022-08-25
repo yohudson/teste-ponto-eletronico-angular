@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter, Input, HostListener } from '@angular/core';
 import { Global } from '../../global';
 import * as $ from 'jquery';
 import Swal from 'sweetalert2';
@@ -17,12 +17,13 @@ export class AtividadeFuncionariosComponent implements OnInit {
   today: any = new Date();
   hora: any;
   busca: any;
+  innerWidth: any;
 
   @Output() dadosFuncionario = new EventEmitter();
   @Input() atualizarListaPontos: any;
   @Input() atualizarListaFuncionarios: any;
   @Output() permitirNovoCadastro = new EventEmitter();
-
+  
   filtro: any = '99';
   totalPorPagina: any = 0;
   paginaAtual: any = 1;
@@ -30,9 +31,22 @@ export class AtividadeFuncionariosComponent implements OnInit {
   itensPagina: any = 1;
   totalItens: any = 1
 
+  showTitle: boolean = false;
+  
+  @HostListener('window:resize', ['$event']) onResize(event?:any) {
+    this.innerWidth = window.innerWidth;
+    if (this.innerWidth <= 880){
+      this.showTitle = true;
+      return
+    }
+    this.showTitle = false;
+  }
+
   constructor(
-    public global: Global
-  ) { }
+    public global: Global,
+  ){
+    this.onResize()
+  }
 
   ngOnInit(): void {
     this.listaStatus = [
@@ -122,6 +136,7 @@ export class AtividadeFuncionariosComponent implements OnInit {
     Swal.showLoading()
     this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
     this.listaPontos = JSON.parse(this.listaPontos)
+    this.totalPorPagina = this.listaPontos.length
     var lista: any = [];
     if (status != 0){
       for (let item of this.listaPontos){
@@ -136,8 +151,10 @@ export class AtividadeFuncionariosComponent implements OnInit {
   }
 
   buscaAtiva = () => {
+    this.filtro = '99'
     this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
     this.listaPontos = JSON.parse(this.listaPontos)
+    this.totalPorPagina = this.listaPontos.length
     var lista: any = [];
     for (let item of this.listaPontos) {
       if (item.funcionario.toLowerCase().includes(this.busca.toLowerCase())) {
@@ -151,9 +168,13 @@ export class AtividadeFuncionariosComponent implements OnInit {
 
   paginarItens = () => {
     this.busca = ''
+    this.filtro = '99'
     var lista: any = []
     this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
     this.listaPontos = JSON.parse(this.listaPontos)
+    if (!this.totalPorPagina){
+      this.totalPorPagina = this.listaPontos.length
+    }
     if (this.totalPorPagina == 0){
       this.listaPontos = lista;
       this.paginaAtual = 1;

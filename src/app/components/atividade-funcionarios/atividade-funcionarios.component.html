@@ -32,19 +32,19 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Funcionário</th>
-                        <th>Entrada</th>
-                        <th>Pausa</th>
-                        <th>Retorno</th>
-                        <th>Saída</th>
-                        <th>Status</th>
-                        <th>Ações</th>
+                        <th [title]="showTitle ? 'Funcionário' : ''">Funcionário</th>
+                        <th [title]="showTitle ? 'Entrada' : ''">Entrada</th>
+                        <th [title]="showTitle ? 'Pausa' : ''">Pausa</th>
+                        <th [title]="showTitle ? 'Retorno' : ''">Retorno</th>
+                        <th [title]="showTitle ? 'Saída' : ''">Saída</th>
+                        <th [title]="showTitle ? 'Status' : ''">Status</th>
+                        <th [title]="showTitle ? 'Ações' : ''">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
                     <tr *ngFor="let ponto of listaPontos">
                         <td>
-                            <a (click)="editarFuncionario(ponto)">
+                            <a (click)="editarFuncionario(ponto)" [title]="showTitle ? ponto.funcionario : ''">
                                 <i class="bi bi-box-arrow-up-right"></i>
                                 <span>&ensp;{{ponto.funcionario}}</span>
                             </a>
