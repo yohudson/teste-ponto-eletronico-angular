@@ -24,6 +24,9 @@ export class AtividadeFuncionariosComponent implements OnInit {
   @Output() permitirNovoCadastro = new EventEmitter();
 
   filtro: any = '99';
+  totalPorPagina: any = 0;
+  paginaAtual: any = 1;
+  totalPaginas: any = 1;
 
   constructor(
     public global: Global
@@ -60,6 +63,8 @@ export class AtividadeFuncionariosComponent implements OnInit {
   obterListaPontos = () => {
     this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
     this.listaPontos = JSON.parse(this.listaPontos)
+    this.totalPorPagina = this.listaPontos.length;
+    // this.paginarItens()
     this.retornarVariavel()
   }
 
@@ -134,6 +139,42 @@ export class AtividadeFuncionariosComponent implements OnInit {
       }
     }
     this.listaPontos = lista
+  }
+
+  paginarItens = () => {
+    var lista: any = []
+    this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
+    this.listaPontos = JSON.parse(this.listaPontos)
+    if (this.totalPorPagina == 0){
+      this.listaPontos = lista;
+      this.paginaAtual = 1;
+      this.totalPaginas = 1;
+      return
+    }
+    if (this.totalPorPagina < 0){
+      this.totalPorPagina = 0;
+      this.listaPontos = lista;
+      this.paginaAtual = 1;
+      this.totalPaginas = 1;
+      return
+    }
+    this.totalPaginas = Math.ceil(this.listaPontos.length / this.totalPorPagina)
+    
+    for (var i = (this.paginaAtual - 1) * this.totalPorPagina; i < this.paginaAtual * this.totalPorPagina; i++) {
+      if (this.listaPontos[i]){
+        lista.push(this.listaPontos[i])
+      }
+    }
+    this.listaPontos = lista;
+  }
+
+  proximaPagina = () => {
+    this.paginaAtual += 1
+    this.paginarItens()
+  }
+  paginaAnterior = () => {
+    this.paginaAtual -= 1
+    this.paginarItens()
   }
 
 }

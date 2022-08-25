@@ -8,15 +8,12 @@
     position: relative;
 }
 
-i {
+.input-icons i {
     min-width: 50px;
     text-align: center;
     display: flex;
     align-items: center;
     padding-left: 14px;
-}
-
-i svg {
     color: #BABFC7;
 }
 
@@ -28,7 +25,7 @@ th {
     color: #5E5873
 }
 
-td svg,
+td i,
 td {
     color: #6E6B7B;
     font-size: 13.75px;
@@ -90,7 +87,7 @@ td a {
 }
 
 table {
-    height: calc(100vh - 320px)
+    height: calc(100vh - 370px)
 }
 
 tbody {

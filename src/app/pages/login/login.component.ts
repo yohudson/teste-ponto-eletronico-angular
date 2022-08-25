@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   log: any = {};
   listaFuncionarios: any = [];
+  visualizarSenha: boolean = false;
 
   constructor(    
     public router: Router
