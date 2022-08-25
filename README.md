@@ -4,8 +4,11 @@ Este projeto foi criado utilizando [Angular CLI](https://github.com/angular/angu
 
 ## Servidor de desenvolvimento
 
-No prompt, execute o comando `ng serve -o` para iniciar um servidor de desenvolvimento. A página será aberta automaticamente no navegador principal.
-Caso não abra, basta acessar o link `http://localhost:4200/`. A aplicação será recarregada automaticamente toda vez que alguma modificação feita em algum arquivo for salva.
+No prompt, navegue até a página do projeto `teste-ponto` e execute o comando `ng serve -o` para iniciar um servidor de desenvolvimento. A página será aberta automaticamente no navegador principal. Caso não abra, basta acessar o link `http://localhost:4200/`. 
+
+Se preferir, execute o comando `ng serve` e acesse o link `http://localhost:4200/`.
+
+A aplicação será recarregada automaticamente toda vez que alguma modificação feita em algum arquivo for salva.
 
 ## Build
 
