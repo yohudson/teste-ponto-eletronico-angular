@@ -20,10 +20,10 @@ A aplicação não utiliza nenhum serviço de API e nenhum banco de dados, sendo
 ## Usuários de teste
 
 Para realizar o acesso à aplicação, é necessário entrar com o e-mail cadastrado para o usuário. Os e-mails disponíveis de antemão são:
-- johndoe@email.com
-- janedoe@email.com
-- morgan3man@email.com
-- gsimmons@email.com
+- `johndoe@email.com`
+- `janedoe@email.com`
+- `morgan3man@email.com`
+- `gsimmons@email.com`
 
 As senhas de todos os usuários é `123`. É possível cadastrar novos usuários, que serão salvos no `localstorage`, em cache no navegador e a senha padrão para todos os usuários será `123` também.
 
