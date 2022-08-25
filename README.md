@@ -26,3 +26,7 @@ Para realizar o acesso à aplicação, é necessário entrar com o e-mail cadast
 - gsimmons@email.com
 
 As senhas de todos os usuários é `123`. É possível cadastrar novos usuários, que serão salvos no `localstorage`, em cache no navegador e a senha padrão para todos os usuários será `123` também.
+
+## Site da aplicação
+
+A aplicação está disponível para acesso no endereço [`https://teste-ponto-eletronico.web.app`](https://teste-ponto-eletronico.web.app), hospedado no serviço `Firebase`, do Google.
