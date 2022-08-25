@@ -25,7 +25,7 @@ Para realizar o acesso à aplicação, é necessário entrar com o e-mail cadast
 - `morgan3man@email.com`
 - `gsimmons@email.com`
 
-As senhas de todos os usuários é `123`. É possível cadastrar novos usuários, que serão salvos no `localstorage`, em cache no navegador e a senha padrão para todos os usuários será `123` também.
+As senhas de todos os usuários é `123`. É possível cadastrar novos usuários, internamente na aplicação, que serão salvos no `localstorage`, em cache no navegador e a senha padrão para os novos usuários também será `123`.
 
 ## Site da aplicação
 
