@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="nav">
+        <app-nav-bar (novoFuncionario)="novoFuncionario()"></app-nav-bar>
+    </div>
+    <div class="body-container ps-3">
+        <div class="row m-1 mb-3 mt-3">
+            <div class="col-7">
+                <app-registrar-ponto (refreshListaPontos)="obterListaPontosAtualizada()" [atualizarListaFuncionarios]="buscarNovosFuncionarios"></app-registrar-ponto>
+            </div>
+        </div>
+        <div class="row m-1 mb-3 mt-3 lista-pontos">
+            <div class="col-12">
+                <app-atividade-funcionarios (dadosFuncionario)="recebeDadosFuncionario($event)" [atualizarListaFuncionarios]="buscarNovosFuncionarios" [atualizarListaPontos]="buscarPontosFuncionarios" (permitirNovoCadastro)="resetaVariavel()"></app-atividade-funcionarios>
+            </div>
+        </div>
+    </div>
+    <div id="backdrop" (click)="fecharBackdrop()"></div>
+    <app-add-funcionario [dadosFuncionario]="dados" (obterFuncionarios)="obterListaFuncionariosAtualizada()" (fechar)="fecharBackdrop()"></app-add-funcionario>
+</div>

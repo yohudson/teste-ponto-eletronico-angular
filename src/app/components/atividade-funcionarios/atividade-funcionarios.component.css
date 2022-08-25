@@ -1,0 +1,107 @@
+.input-icons i {
+    position: absolute;
+    height: 100%;
+}
+
+.input-icons {
+    width: 100%;
+    position: relative;
+}
+
+i {
+    min-width: 50px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+
+i svg {
+    color: #BABFC7;
+}
+
+input#busca {
+    padding-left: 35px;
+}
+
+th {
+    color: #5E5873
+}
+
+td svg,
+td {
+    color: #6E6B7B;
+    font-size: 13.75px;
+    line-height: 21px;
+}
+
+td .nome {
+    color: #6D6D6D;
+    font-weight: 500;
+}
+
+select option {
+    color: #83808E;
+    /*text-align: center;*/
+    font-weight: 500;
+    appearance: none;
+    padding: 25px;
+}
+
+select:focus>option:hover {
+    background-color: #F1F1F1;
+    border-bottom: 0.5px solid #D1D1D1;
+}
+
+.badge {
+    padding: 7px 21px;
+    font-weight: 600;
+    font-size: 8.65px;
+    line-height: 11px;
+}
+
+.trabalhando {
+    background-color: #1584EA;
+}
+
+.pausa {
+    background-color: #ACACAC;
+}
+
+.ausente {
+    background-color: #DD7718;
+}
+
+.finalizado {
+    background-color: #12BF38;
+}
+
+.dropstart .dropdown-toggle::before {
+    display: none;
+}
+
+li:hover {
+    cursor: pointer;
+    background-color: #f1f1f1
+}
+
+td a {
+    cursor: pointer;
+}
+
+table {
+    height: calc(100vh - 320px)
+}
+
+tbody {
+    display: block;
+    height: 100%;
+    overflow-y: auto;
+}
+
+thead tr,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}

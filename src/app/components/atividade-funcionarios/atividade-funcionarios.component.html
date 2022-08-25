@@ -1,0 +1,107 @@
+<div class="row">
+    <h4 class="d-flex align-pontos-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+        </svg>&ensp;Atvidade dos funcionários
+    </h4>
+</div>
+<div class="row">
+    <div class="card">
+        <div class="filtro row d-flex justify-content-between">
+            <div class="col-4 d-flex align-bottom ps-2">
+                <div class="col-6 d-flex align-bottom">
+                    <label class="text-nowrap me-2 d-flex align-pontos-center">Por página</label>
+                    <input type="number" class="form-control ms-2" />
+                </div>
+            </div>
+            <div class="col-8 d-flex align-bottom">
+                <div class="col-4 d-flex align-bottom me-2">
+                    <select class="form-control" (change)="filtraStatus(filtro)" [(ngModel)]="filtro">
+                        <option hidden value="99">Status</option>
+                        <option value="0">Todos</option>
+                        <option [value]="status.id" *ngFor="let status of listaStatus">{{status.nome}}</option>
+                    </select>
+                </div>
+                <div class="col-8 d-flex align-bottom ms-2 pe-3">
+                    <div class="input-icons">
+                        <i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search icon" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </i>
+                        <input type="text" class="form-control" placeholder="Procurar" id="busca" [(ngModel)]="busca" (keyup)="buscaAtiva()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="lista_atividades row d-flex mt-3">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Funcionário</th>
+                        <th>Entrada</th>
+                        <th>Pausa</th>
+                        <th>Retorno</th>
+                        <th>Saída</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="align-middle">
+                    <tr *ngFor="let ponto of listaPontos">
+                        <td>
+                            <a (click)="editarFuncionario(ponto)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                    <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                                </svg>
+                                <span>&ensp;{{ponto.funcionario}}</span>
+                            </a>
+                        </td>
+                        <td>{{ponto?.entrada ? ponto.entrada : '-'}}</td>
+                        <td>{{ponto?.pausa ? ponto.pausa : '-'}}</td>
+                        <td>{{ponto?.retorno ? ponto.retorno : '-'}}</td>
+                        <td>{{ponto?.saida ? ponto.saida : '-'}}</td>
+                        <td>
+                            <span class="badge rounded-pill text-white trabalhando" *ngIf="ponto?.entrada && !ponto?.pausa  && !ponto?.saida || ponto?.pausa && ponto?.retorno && !ponto?.saida">Trabalhando</span>
+                            <span class="badge rounded-pill text-white pausa" *ngIf="ponto?.entrada && ponto?.pausa && !ponto?.retorno && !ponto?.saida">Em pausa</span>
+                            <span class="badge rounded-pill text-white ausente" *ngIf="!ponto?.entrada && !ponto?.pausa && !ponto?.retorno && !ponto?.saida">Não iniciado</span>
+                            <span class="badge rounded-pill text-white finalizado" *ngIf="ponto?.saida">Finalizado</span>
+                            <!-- {{ponto?.saida ? 'Finalizado' : ponto?.pausa ? 'Em pausa' : ponto?.entrada || ponto?.retorno ? 'Trabalhando' : 'Não iniciado'}} -->
+                        </td>
+                        <td>
+                            <div class="btn-group dropstart">
+                                <button class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                                        <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="p-2 dropdown-item" [ngClass]="ponto.pausa ? 'disabled' : '' " (click)="novaAtividade(ponto.id, 3)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16">
+                                                <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                                            </svg>&ensp;Pausa
+                                    </li>
+                                    <li class="p-2 dropdown-item" [ngClass]="ponto.retorno ? 'disabled' : '' " (click)="novaAtividade(ponto.id, 2)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                                                <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                            </svg>&ensp;Retomar
+                                    </li>
+                                    <li class="p-2 dropdown-item" [ngClass]="ponto.saida ? 'disabled' : '' " (click)="novaAtividade(ponto.id, 4)">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                                                <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"/>
+                                                <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"/>
+                                            </svg>&ensp;Finalizar
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr *ngIf="listaPontos.length == 0">
+                        <td>Não há dados para exibir</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

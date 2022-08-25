@@ -1,0 +1,37 @@
+.logo {
+    font-family: 'Langar';
+    font-size: 64px;
+    line-height: 90px;
+    color: #FFB800;
+    text-shadow: -2px 0px 0px #BC8802;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    padding: 30px;
+    border: 0px;
+}
+
+.container-fluid {
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+}
+
+.container-fluid .row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    font-size: 12px;
+    line-height: 18px;
+    color: #6E6B7B;
+}
+
+label.recuperar-senha {
+    color: #B3891D;
+}
