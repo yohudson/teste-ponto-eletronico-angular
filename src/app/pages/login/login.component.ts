@@ -62,4 +62,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  verSenha = () => {
+    this.visualizarSenha = !this.visualizarSenha
+  }
+
 }
