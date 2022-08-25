@@ -27,6 +27,8 @@ export class AtividadeFuncionariosComponent implements OnInit {
   totalPorPagina: any = 0;
   paginaAtual: any = 1;
   totalPaginas: any = 1;
+  itensPagina: any = 1;
+  totalItens: any = 1
 
   constructor(
     public global: Global
@@ -64,6 +66,9 @@ export class AtividadeFuncionariosComponent implements OnInit {
     this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
     this.listaPontos = JSON.parse(this.listaPontos)
     this.totalPorPagina = this.listaPontos.length;
+    this.itensPagina = this.listaPontos.length;
+    this.totalItens = this.listaPontos.length;
+
     // this.paginarItens()
     this.retornarVariavel()
   }
@@ -126,6 +131,7 @@ export class AtividadeFuncionariosComponent implements OnInit {
       }
       this.listaPontos = lista;
     }
+    this.itensPagina = this.listaPontos.length;
     Swal.close()
   }
 
@@ -139,9 +145,12 @@ export class AtividadeFuncionariosComponent implements OnInit {
       }
     }
     this.listaPontos = lista
+    this.itensPagina = this.listaPontos.length;
+    this.totalPaginas = Math.ceil(this.listaPontos.length / this.totalPorPagina)
   }
 
   paginarItens = () => {
+    this.busca = ''
     var lista: any = []
     this.listaPontos = localStorage.getItem('@TestePonto:listaPontos')
     this.listaPontos = JSON.parse(this.listaPontos)
@@ -166,6 +175,8 @@ export class AtividadeFuncionariosComponent implements OnInit {
       }
     }
     this.listaPontos = lista;
+    this.itensPagina = this.listaPontos.length;
+
   }
 
   proximaPagina = () => {

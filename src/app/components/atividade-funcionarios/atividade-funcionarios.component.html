@@ -58,7 +58,6 @@
                             <span class="badge rounded-pill text-white pausa" *ngIf="ponto?.entrada && ponto?.pausa && !ponto?.retorno && !ponto?.saida">Em pausa</span>
                             <span class="badge rounded-pill text-white ausente" *ngIf="!ponto?.entrada && !ponto?.pausa && !ponto?.retorno && !ponto?.saida">Não iniciado</span>
                             <span class="badge rounded-pill text-white finalizado" *ngIf="ponto?.saida">Finalizado</span>
-                            <!-- {{ponto?.saida ? 'Finalizado' : ponto?.pausa ? 'Em pausa' : ponto?.entrada || ponto?.retorno ? 'Trabalhando' : 'Não iniciado'}} -->
                         </td>
                         <td>
                             <div class="btn-group dropstart">
@@ -85,8 +84,11 @@
                 </tbody>
             </table>
         </div>
-        <nav>
-            <ul class="pagination justify-content-center">
+        <nav class="d-flex align-items-center justify-content-between">
+            <label class="justify-content-start">
+                Mostrando {{itensPagina}} de {{totalItens}} resultados
+            </label>
+            <ul class="pagination justify-content-end">
                 <li class="page-item" [ngClass]="paginaAtual == 1 ? 'disabled' : ''">
                     <a class="page-link" (click)="paginaAnterior()">Anterior</a>
                 </li>
